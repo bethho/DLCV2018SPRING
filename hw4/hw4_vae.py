@@ -99,7 +99,7 @@ def vae(image_size, la):
     # instantiate encoder model
     encoder = Model(inputs, [z_mean, z_log_var, z], name='encoder')
     encoder.summary()
-    plot_model(encoder, to_file='vae_cnn_encoder.png', show_shapes=True)
+    #plot_model(encoder, to_file='vae_cnn_encoder.png', show_shapes=True)
     
     # build decoder model
     latent_inputs = Input(shape=(latent_dim,), name='z_sampling')
@@ -126,13 +126,13 @@ def vae(image_size, la):
     # instantiate decoder model
     decoder = Model(latent_inputs, outputs, name='decoder')
     decoder.summary()
-    plot_model(decoder, to_file='vae_cnn_decoder.png', show_shapes=True)
+    #plot_model(decoder, to_file='vae_cnn_decoder.png', show_shapes=True)
     
     # instantiate VAE model
     outputs = decoder(encoder(inputs)[2])
     print(outputs.shape)
     vae = Model(inputs, outputs, name='vae')
-    plot_model(vae, to_file='vae_cnn.png', show_shapes=True)
+    #plot_model(vae, to_file='vae_cnn.png', show_shapes=True)
     vae.summary()
     def vae_loss(inputs, outputs):
         mse = K.mean(K.square(outputs - inputs))
@@ -175,7 +175,7 @@ gender = df['Male']
 ## fig1_2.jpg
 plot_history(save)
 
-np.random.seed(0)
+np.random.seed(2)
 ## fig1_3.jpg
 digit_size = 64
 figure = np.zeros((digit_size * 2, digit_size * 10,3))

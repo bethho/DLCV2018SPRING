@@ -256,7 +256,7 @@ class ACGAN():
         fig.savefig("acgan_images1/%d.png" % epoch)
         plt.close()
         
-generator = load_model('./generator_model_10000.h5')
+generator = load_model('./generator_model_15000.h5')
 
 directory = sys.argv[1]
 save = sys.argv[2]
